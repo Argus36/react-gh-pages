@@ -29,6 +29,9 @@ function App() {
               title = {obj.name}
               price={obj.price}
               imageUrl={obj.imageUrl}
+              onClick = {() => {
+                 alert(`Вы выбрали кросовки: ${obj.name}, Цена: ${obj.price},`)
+              }}
             />
           ))}
 
