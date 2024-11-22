@@ -1,4 +1,4 @@
-function Header() { // Функциональный компонент
+function Header(props) { // Функциональный компонент
   return (
     <header className="header d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
@@ -9,7 +9,7 @@ function Header() { // Функциональный компонент
         </div>
       </div>
       <ul className="d-flex">
-        <li className="mr-30">
+        <li onClick={props.onClickCart} className="mr-30 cu-p">
           <img width={18} height={18} src="/react-gh-pages/Img/cart.svg" />
           <span>1205 руб.</span>
         </li>
