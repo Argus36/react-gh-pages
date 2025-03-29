@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Inter', system-ui;
+  list-style-type: none;
 }
 html, body {
   height: 100%;
@@ -25,14 +26,14 @@ body {
     header {
       svg {
         path {
-          stroke: white;
+          stroke: rgb(255, 255, 255);
           fill: none;
         }
       }
       li:nth-child(2) {
         svg {
           path {
-            fill: white;
+            fill: rgb(255, 255, 255);
             stroke: none;
           }
         }
@@ -73,23 +74,100 @@ body {
 .wrapper {
   width: 80%;
   margin: 5vh auto;
-  height: 100vh;
+  height: 95vh;
   border-radius: 50px;
 
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2vh 2.5vh;
+    padding: 2.5vh;
+
+    .headerLeft {
+      justify-content: flex-start;
+    }
+
+    .headerRight {
+      justify-content: flex-end;
+    }
 
     .headerLeft, .headerRight {
       display: flex;
-      justify-content: center;
       align-items: center;
+
+      h2 {
+        font-size: 3.5vh;
+      }
 
       img {
         width: 5vh;
+        margin: 0 2.5vh 0 1vh;
       }
+
+      li {
+        display: flex;
+        margin: 0 1.5vh;
+
+        svg {
+          width: 3.5vh;
+        }
+      }
+      li:nth-child(1) {
+
+        svg {
+          margin-right: 1.5vh;
+        }
+
+        span {
+          font-size: 2vh;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  hr {
+    height: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .content {
+    margin: 5vh 0;
+    padding: 2.5vh;
+
+    .cart {
+      border: 1px solid rgb(126, 126, 126);
+      padding: 2.5vh;
+      width: 25vh;
+      border-radius: 40px;
+      transition: all 0.2s ease-in-out;
+
+      img {
+        height: 7.5vh;
+      }
+
+      button {
+        background: rgb(35, 199, 35);
+        border: none;
+        width: 2.5vh;
+        height: 2.5vh;
+
+        &:hover {
+          background: lighten(rgb(35, 199, 35), 5%);
+          border: none;
+        }
+
+        &:active {
+          background: darken(rgb(35, 199, 35), 5%);
+          border: none;
+        }
+      }
+
+      &:hover {
+        transform: translate(0, -10px);
+        transition: all 0.2s ease-in-out;
+      }
+
     }
   }
 }
@@ -98,10 +176,61 @@ body {
   .wrapper {
     width: 90%;
     margin: 2.5vh auto;
-    border-radius: 10px;
+    border-radius: 25px;
 
-    .header {
-      padding: 1vh 1.5vh;
+    header {
+      padding: 2.5vh 1vh 1vh 1vh;
+
+      .headerLeft {
+        width: 40vh;
+
+        img {
+          width: 4vh;
+          margin: 0 1.5vh 0 1vh;
+        }
+
+        h2 {
+          font-size: 1.75vh;
+        }
+
+        p {
+          font-size: 1.5vh;
+        }
+      }
+
+      .headerRight {
+        width: 25vh;
+
+        li {
+          margin: 0;
+
+          svg {
+            width: 2.75vh;
+          }
+        }
+        li:nth-child(1) {
+          margin-right: 1vh;
+
+          svg {
+            margin-right: 1vh;
+            width: 2.75vh;
+          }
+
+          span {
+            font-size: 1.5vh;
+            word-break: break-all;
+          }
+        }
+      }
+    }
+
+    hr {
+      margin: 2vh 0;
+    }
+
+    .content {
+      margin: 0;
+      padding: 1vh;
     }
   }
 }
