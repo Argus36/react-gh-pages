@@ -9,7 +9,7 @@ function App() {
           <img src="/react-gh-pages/Img/logo.png" alt=""/>
           <div className="headerInfo">
             <h2>REACT SNEAKERS</h2>
-            <p>Магазин лучших кроссовок</p>
+            <p className="opacity-6">Магазин лучших кроссовок</p>
           </div>
         </div>
         <ul className="headerRight">
@@ -30,22 +30,174 @@ function App() {
       </header>
       <hr/>
       <div className="content">
-        <h2>Все кроссовки</h2>
-        ...
-        <div className="cart">
-          <img src="/react-gh-pages/Img/Sneakers/1.png" alt="" />
-          <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <span>Цена:</span>
-              <b>12 999 руб.</b>
-            </div>
-            <button>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" stroke="rgb(255, 255, 255)" fill="rgb(255, 255, 255)"/>
-              </svg>
-            </button>
+        <div className="d-flex align-center justify-between mb-40">
+          <h2>Все кроссовки</h2>
+          <div className="search-block">
+            <img src="/react-gh-pages/Img/search.svg" alt="Search" />
+            <input placeholder="Поиск..." type="text" />
           </div>
+        </div>
+        <div className="sneakers">
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/1.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/2.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/3.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/4.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/5.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/6.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/7.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/8.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/9.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="cart">
+            <img src="/react-gh-pages/Img/Sneakers/10.png" alt="Sneakers" />
+            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between align-center">
+              <div className="d-flex justify-between flex-column">
+                <p>Цена:</p>
+                <b>12 999 руб.</b>
+              </div>
+              <button>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
