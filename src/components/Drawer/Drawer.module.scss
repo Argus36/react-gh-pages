@@ -1,0 +1,161 @@
+@media screen and (prefers-color-scheme: dark) {
+  .drawer {
+    background: rgb(112, 112, 112);
+
+    .cartItem {
+      border: solid 1px #7e7e7e;
+    }
+  }
+}
+
+@media screen and (prefers-color-scheme: light) {
+  .drawer {
+    background: rgb(255, 255, 255);
+
+    .cartItem {
+      border: solid 1px #f3f3f3;
+    }
+  }
+}
+
+@keyframes motion {
+  0% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(15%);
+  }
+}
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vh;
+    height: 100vh;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 3vh;
+    padding-right: 1.5vh;
+    border-radius: 50px 0 0 50px;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 3.5vh;
+      margin: 0 0 4vh 3vh;
+    }
+
+    svg {
+      height: 5vh;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.2s ease-in-out;
+      margin-left: 0.5vh;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .items {
+      flex: 1;
+      overflow: auto;
+      margin-bottom: 2.5vh;
+      padding-right: 1.5vh;
+
+      .cartItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2vh;
+        border-radius: 20px;
+        margin-bottom: 2vh;
+
+        img {
+          height: 5vh;
+          margin-right: 20px;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 0.75vh;
+        background: rgba(141, 141, 141, 0.25);
+        border-radius: 30px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(141, 141, 141, 0.5);
+        border-radius: 30px;
+      }
+    }
+
+    .cartTotalBlock {
+      ul {
+        margin-bottom: 3vh;
+
+        li {
+          display: flex;
+          align-items: flex-end;
+          margin: 1vh 0;
+
+          div {
+            margin: 0 0.35vh 0.5vh 0.5vh;
+            flex: 1;
+            border-bottom: 1px dashed rgb(223, 223, 223);
+            height: 1px;
+          }
+        }
+      }
+      button {
+        position: relative;
+        border-radius: 18px 18px 18px 50px;
+
+        img {
+          position: absolute;
+          right: 15%;
+          transition: transform 0.2s ease-in-out;
+          animation: none;
+        }
+
+        &:hover {
+          img {
+            animation-name: motion;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (orientation:portrait) {
+  .overlay {
+    .drawer {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0px;
+
+      .cartTotalBlock {
+        button {
+          border-radius: 18px;
+        }
+      }
+    }
+  }
+}
