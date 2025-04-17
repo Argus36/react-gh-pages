@@ -28,8 +28,15 @@
   transition: all 0.2s ease-in-out;
 
   .favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.25vh;
+    width: 3.25vh;
     position: absolute;
     cursor: pointer;
+    border: 1px solid rgb(125, 125, 125);
+    border-radius: 8px;
   }
 
   img {

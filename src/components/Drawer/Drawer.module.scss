@@ -53,6 +53,7 @@
 
     h3 {
       display: flex;
+      height: 10%;
       align-items: center;
       justify-content: space-between;
       font-size: 3.5vh;
@@ -76,6 +77,19 @@
       overflow: auto;
       margin-bottom: 2.5vh;
       padding-right: 1.5vh;
+
+      h2{
+        font-size: 4vh;
+        font-weight: 600;
+        margin-bottom: 2.5vh;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 2.25vh;
+        font-weight: 300;
+        margin: 0;
+      }
 
       .cartItem {
         display: flex;
@@ -150,6 +164,12 @@
       width: 100%;
       height: 100vh;
       border-radius: 0px;
+
+      .items {
+        .cartItem {
+          height: 12vh;
+        }
+      }
 
       .cartTotalBlock {
         button {
