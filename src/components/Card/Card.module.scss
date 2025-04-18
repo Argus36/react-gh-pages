@@ -88,7 +88,8 @@
   .cart {
     width: 19vh;
     padding: 3.5vh 2vh;
-    height: auto;
+    min-height: 2.5vh;
+    height: min-content;
     border-radius: 35px;
 
     h5 {
