@@ -1,9 +1,10 @@
-import Card from '../components/Card';
-import { useState } from "react";
+import {Card} from '../components/Card';
+import React from "react";
+import {AppContext} from "../context";
 
-export default function Favorite({items, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite}) {
+export function Favorite() {
 
-  const [value, setValue] = useState(0);
+  const {favorites, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite} = React.useContext(AppContext);
 
   return (
     <div className="content">
@@ -11,7 +12,7 @@ export default function Favorite({items, onAddCart, onRemoveCart, onAddFavorite,
         <h2>Мои закладки</h2>
       </div>
       <div className="sneakers">
-        {items.map((item) => (
+        {favorites.map((item) => (
           <Card
             key={item.id}
             id={item.id}

@@ -112,6 +112,18 @@ body {
   }
 }
 
+@keyframes button-disabled {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .greenButton {
   display: flex;
   align-items: center;
@@ -125,6 +137,12 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.1s ease-in-out;
+
+  &:disabled {
+    background: #b3b3b3 !important;
+    cursor: not-allowed;
+    animation: button-disabled 1s ease-in-out infinite;
+  }
 
   &:hover {
     background: lighten(#73bd48, 5%);

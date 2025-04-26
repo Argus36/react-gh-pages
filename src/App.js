@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import Home from "./pages/Home";
-import Favorite from "./pages/Favorite";
-import Drawer from "./components/Drawer";
-import Header from "./components/Header";
+import {Home} from "./pages/Home";
+import {Favorite} from "./pages/Favorite";
+import {Drawer} from "./components/Drawer";
+import {Header} from "./components/Header";
+import {AppContext} from "./context";
 
 function App() {
 
@@ -13,27 +14,40 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const totalPrice = (cartItems.reduce((sum, obj) => obj.price + sum, 0));
 
   useEffect(() => {
-    axios.get('https://67f6f24442d6c71cca63b1de.mockapi.io/items').then((res) => {
-      setItems(res.data);
-    }).catch((err) => {
-      alert('Ошибка при загрузке товаров');
-    });
+    async function fetchData() {
+      try {
+        await axios.get('https://67f6f24442d6c71cca63b1de.mockapi.io/items').then((res) => {
+          setItems(res.data);
+          setIsLoading(false);
+        }).catch((err) => {
+          alert('Ошибка при загрузке товаров');
+        });
 
-    axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?isAdded=true`)
-    .then((res) => {
-      setCartItems(res.data);
-    })
-    .catch(() => {
-      return;
-    });
+        await axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?isAdded=true`)
+        .then((res) => {
+          setCartItems(res.data);
+        })
+        .catch(() => {
+          return;
+        });
 
-    axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?inFavorite=true`).then((res) => {
-      setFavorites(res.data);
-    }).catch(() => {
-      return;
-    });
+        await axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?inFavorite=true`).then((res) => {
+          setFavorites(res.data);
+        }).catch(() => {
+          return;
+        });
+
+      } catch (error) {
+        alert('Ошибка при загрузке данных');
+        console.error('Ошибка при загрузке данных', error);
+      }
+    }
+
+    fetchData();
 
   }, []);
 
@@ -128,54 +142,29 @@ function App() {
   }
 
   return (
-    <div className="wrapper">
+    <AppContext.Provider value={{items, setCartItems, cartItems, favorites, searchValue, setSearchValue, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite, onChangeSearchInput, setCartOpened, totalPrice, isLoading}}>
+      <div className="wrapper">
+        {cartOpened && <Drawer/>}
 
-      {cartOpened &&
-        <Drawer
-          items={cartItems}
-          onRemove={(id) => {
-            onRemoveCart(id)
-          }}
-          onClickClose = {() =>
-            setCartOpened(false)
-          }
-        />
-      }
+        <Header/>
 
-      <Header
-        onClickOpenDrawer={() =>
-          setCartOpened(true)
-        }
-      />
+        <Routes>
 
-      <Routes>
+          <Route path="/react-gh-pages" element={
+            <Home
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              onChangeSearchInput={onChangeSearchInput}
+            />
+          }/>
 
-        <Route path="/" element={
-          <Home
-            items={items}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            onChangeSearchInput={onChangeSearchInput}
-            onAddCart={onAddCart}
-            onRemoveCart={onRemoveCart}
-            onAddFavorite={onAddFavorite}
-            onRemoveFavorite={onRemoveFavorite}
-          />
-        }/>
+          <Route path="/react-gh-pages/favorites" element={
+            <Favorite/>
+          }/>
 
-        <Route path="/favorites" element={
-          <Favorite
-            items={favorites}
-            onAddCart={onAddCart}
-            onRemoveCart={onRemoveCart}
-            onAddFavorite={onAddFavorite}
-            onRemoveFavorite={onRemoveFavorite}
-          />
-        }/>
-
-      </Routes>
-
-    </div>
+        </Routes>
+      </div>
+    </AppContext.Provider>
   );
 }
 

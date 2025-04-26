@@ -1,6 +1,45 @@
-import Card from "../components/Card";
+import {Card} from "../components/Card";
+import React from "react";
+import {AppContext} from "../context";
 
-export default function Home({items, searchValue, setSearchValue, onChangeSearchInput, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite}) {
+export function Home({searchValue, setSearchValue, onChangeSearchInput}) {
+
+  const {isLoading, items} = React.useContext(AppContext);
+
+  const renderItems = () => {
+
+    const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+
+    return (isLoading ?
+      (
+        [...Array(10)].map((item, index) => (
+          <Card
+            key={index}
+            id={index}
+            title={item}
+            price={item}
+            imageUrl={item}
+            favorite={item}
+            addChecked={item}
+          />
+        ))
+      )
+      :
+      (
+        filteredItems.map((item) => (
+        <Card
+          key={item.id}
+          loading={isLoading}
+          id={item.id}
+          title={item.title}
+          price={item.price}
+          imageUrl={item.imageUrl}
+          favorite={item.inFavorite}
+          addChecked={item.isAdded}
+        />
+      ))))
+  }
+
   return (
     <div className="content">
       <div className="content-title">
@@ -17,32 +56,7 @@ export default function Home({items, searchValue, setSearchValue, onChangeSearch
         </div>
       </div>
       <div className="sneakers">
-        {items
-        .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
-              favorite={item.inFavorite}
-              addChecked={item.isAdded}
-              onAddChecked = {(id) => {
-                onAddCart(id);
-              }}
-              onRemoveChecked = {(id) => {
-                onRemoveCart(id);
-              }}
-              onAddFavorite = {(id) => {
-                onAddFavorite(id);
-              }}
-              onRemoveFavorite = {(id) => {
-                onRemoveFavorite(id);
-              }}
-            />
-          ))
-        }
+        {renderItems()}
       </div>
     </div>
   );
