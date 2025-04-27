@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import {Home} from "./pages/Home";
 import {Favorite} from "./pages/Favorite";
+import {Order} from "./pages/Order";
 import {Drawer} from "./components/Drawer";
 import {Header} from "./components/Header";
 import {AppContext} from "./context";
@@ -20,7 +21,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        await axios.get('https://67f6f24442d6c71cca63b1de.mockapi.io/items').then((res) => {
+        await axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items`).then((res) => {
           setItems(res.data);
           setIsLoading(false);
         }).catch((err) => {
@@ -51,90 +52,86 @@ function App() {
 
   }, []);
 
-  /* Возможный способ обновления данных
-  const update = () => {
-    axios.get('https://67f6f24442d6c71cca63b1de.mockapi.io/items').then((res) => {
-      setItems(res.data);
-    });
-
-    axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?isAdded=true`)
-    .then((res) => {
-      setCartItems(res.data);
-    })
-    .catch(() => {
-      setCartItems([]);
-    });
-
-    axios.get(`https://67f6f24442d6c71cca63b1de.mockapi.io/items?inFavorite=true`)
-    .then((res) => {
-      setFavorites(res.data);
-    })
-    .catch(() => {
-      setFavorites([]);
-    });
-  }
-  */
-
-  //onPlus - добавление в корзину
   const onAddCart = (id) => {
-    axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
-      "isAdded": true,
-    }).catch(err => {
-      alert('Ошибка добавления в корзину товара');
-    });
+    try {
 
-    //update(); возможное обновление данных
+      axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
+        "isAdded": true,
+      }).catch(err => {
+        alert('Ошибка добавления в корзину товара');
+      });
 
-    let i = items.find((item) => item.id === id);
-    i.isAdded = true;
-    setItems((prev) => [...prev]);
-    setCartItems((prev) => [...prev, i]);
+      let i = items.find((item) => item.id === id);
+      i.isAdded = true;
+      setItems((prev) => [...prev]);
+      setCartItems((prev) => [...prev, i]);
+
+    } catch (error) {
+      alert('Ошибка при добавлении товара в корзину');
+      console.error('Ошибка при добавлении товара в корзину', error);
+    }
+
   }
 
   const onRemoveCart = (id) => {
-    axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
-      "isAdded": false,
-    }).catch(err => {
-      alert('Ошибка удаления из корзини товара');
-    });
+    try {
 
-    //update(); возможное обновление данных
+      axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
+        "isAdded": false,
+      }).catch(err => {
+        alert('Ошибка удаления из корзини товара');
+      });
 
-    let i = items.find((item) => item.id === id);
-    i.isAdded = false;
-    setItems((prev) => [...prev]);
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+      let i = items.find((item) => item.id === id);
+      i.isAdded = false;
+      setItems((prev) => [...prev]);
+      setCartItems((prev) => prev.filter((item) => item.id !== id));
+
+    } catch (error) {
+      alert('Ошибка при удалении товара из корзины');
+      console.error('Ошибка при удалении товара из корзины', error);
+    }
   }
 
   //onFavorite - добавление в избранное
   const onAddFavorite = (id) => {
-    axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
-      "inFavorite": true,
-    }).catch(err => {
-      alert('Ошибка добавления в избранное товара');
-    });
+    try {
 
-    //update(); возможное обновление данных
+      axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
+        "inFavorite": true,
+      }).catch(err => {
+        alert('Ошибка добавления в избранное товара');
+      });
 
-    let i = items.find((item) => item.id === id);
-    i.inFavorite = true;
-    setItems((prev) => [...prev]);
-    setFavorites((prev) => [...prev, i]);
+      let i = items.find((item) => item.id === id);
+      i.inFavorite = true;
+      setItems((prev) => [...prev]);
+      setFavorites((prev) => [...prev, i]);
+
+    } catch (error) {
+      alert('Ошибка при добавлении товара в избранное');
+      console.error('Ошибка при добавлении товара в избранное', error);
+    }
   }
 
   const onRemoveFavorite = (id) => {
-    axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
-      "inFavorite": false,
-    }).catch(err => {
-      alert('Ошибка удаления из избранного товара');
-    });
+    try {
 
-    //update(); возможное обновление данных
+      axios.put(`https://67f6f24442d6c71cca63b1de.mockapi.io/items/${id}`, {
+        "inFavorite": false,
+      }).catch(err => {
+        alert('Ошибка удаления из избранного товара');
+      });
 
-    let i = items.find((item) => item.id === id);
-    i.inFavorite = false;
-    setItems((prev) => [...prev]);
-    setFavorites((prev) => prev.filter((item) => item.id !== id));
+      let i = items.find((item) => item.id === id);
+      i.inFavorite = false;
+      setItems((prev) => [...prev]);
+      setFavorites((prev) => prev.filter((item) => item.id !== id));
+
+    } catch (error) {
+      alert('Ошибка при удалении товара из избранного');
+      console.error('Ошибка при удалении товара из избранного', error);
+    }
   }
 
   const onChangeSearchInput = (text) => {
@@ -142,9 +139,9 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{items, setCartItems, cartItems, favorites, searchValue, setSearchValue, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite, onChangeSearchInput, setCartOpened, totalPrice, isLoading}}>
+    <AppContext.Provider value={{items, setCartItems, cartItems, favorites, searchValue, setSearchValue, onAddCart, onRemoveCart, onAddFavorite, onRemoveFavorite, onChangeSearchInput, setCartOpened, cartOpened, totalPrice, isLoading}}>
       <div className="wrapper">
-        {cartOpened && <Drawer/>}
+        <Drawer/>
 
         <Header/>
 
@@ -160,6 +157,10 @@ function App() {
 
           <Route path="/react-gh-pages/favorites" element={
             <Favorite/>
+          }/>
+
+          <Route path="/react-gh-pages/order" element={
+            <Order/>
           }/>
 
         </Routes>

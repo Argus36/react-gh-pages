@@ -8,8 +8,8 @@ export function Favorite() {
 
   return (
     <div className="content">
-      <div className="content-title">
-        <h2>Мои закладки</h2>
+      <div style={{marginBottom: '1vw'}} className="content-title">
+        <h2 style={{marginBottom: '1vw'}}>Мои закладки</h2>
       </div>
       <div className="sneakers">
         {favorites.map((item) => (

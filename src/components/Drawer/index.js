@@ -6,7 +6,7 @@ import {Info} from "./Info.jsx";
 
 export function Drawer() {
 
-  const {setCartItems, cartItems, onRemoveCart, setCartOpened, totalPrice} = React.useContext(AppContext);
+  const {setCartItems, cartItems, onRemoveCart, setCartOpened, cartOpened, totalPrice} = React.useContext(AppContext);
 
   const [orderId, setOrderId] = React.useState(null);
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
@@ -33,8 +33,8 @@ export function Drawer() {
 
   return (
   <div>
-    <style>{`body {overflow: hidden;}`}</style>
-    <div className={styles.overlay}>
+    {cartOpened && (<style>{`body {overflow: hidden; }`}</style>)}
+    <div className={`${styles.overlay} ${cartOpened && styles.overlayOpen}`}>
       <div className={styles.drawer}>
         <h3>
           Корзина
