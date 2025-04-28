@@ -92,6 +92,14 @@
     height: min-content;
     border-radius: 35px;
 
+    .contentLoader {
+      svg {
+        width: 15vh;
+        height: 18vh;
+      }
+    }
+
+
     h5 {
       font-size: 1.365vh;
       font-weight: 500;

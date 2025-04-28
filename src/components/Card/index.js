@@ -29,21 +29,23 @@ export function Card({id ,title, price, imageUrl, favorite, addChecked}) {
     <div className={styles.cart}>
 
       {isLoading ? (
-        <ContentLoader
-          speed={2}
-          width={175}
-          height={235}
-          viewBox="0 0 175 235"
-          backgroundColor="#b8b8b8"
-          foregroundColor="#e6e6e6"
-          //{...props}
-        >
-          <rect x="0" y="123" rx="5" ry="5" width="175" height="25" />
-          <rect x="0" y="154" rx="5" ry="5" width="125" height="25" />
-          <rect x="0" y="199" rx="5" ry="5" width="105" height="25" />
-          <rect x="143" y="193" rx="5" ry="5" width="32" height="32" />
-          <rect x="0" y="0" rx="5" ry="5" width="175" height="105" />
-        </ContentLoader>
+        <div className={styles.contentLoader}>
+          <ContentLoader
+            speed={2}
+            width={`18.5vh`}
+            height={`23.5vh`}
+            viewBox="0 0 175 235"
+            backgroundColor="#b8b8b8"
+            foregroundColor="#e6e6e6"
+            //{...props}
+          >
+            <rect x="0" y="123" rx="5" ry="5" width="175" height="25" />
+            <rect x="0" y="154" rx="5" ry="5" width="125" height="25" />
+            <rect x="0" y="199" rx="5" ry="5" width="105" height="25" />
+            <rect x="143" y="193" rx="5" ry="5" width="32" height="32" />
+            <rect x="0" y="0" rx="5" ry="5" width="175" height="105" />
+          </ContentLoader>
+        </div>
       ) : (
         <>
           <div onClick={onClickFavorite} className={styles.favorite}>
