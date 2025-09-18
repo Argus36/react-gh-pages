@@ -164,6 +164,7 @@ function App() {
           }/>
 
         </Routes>
+        {console.log(items)}
       </div>
     </AppContext.Provider>
   );
